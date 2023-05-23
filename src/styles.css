@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.fa-pencil-square-o,.fa-trash-o{
+    font-size: 28px;
+    cursor: pointer;
+}
+.fa-pencil-square-o{
+    color: #3498DB;
+    
+}
+.fa-trash-o{
+    color: #FC4949;
+    
+}
+th{
+    background-color: #5DADE2 !important;
+    color:white;
+}

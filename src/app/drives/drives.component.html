@@ -1,0 +1,163 @@
+<div class="container">
+<section id="listDrive" *ngIf="isList">
+    <div class="row">
+        <div class="col">
+            <h3>
+                <button type="button" class="btn btn-outline-primary" (click)="toggleScreen()">Add Button</button>
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Drive By</th>
+                        <th>Criteria</th>
+                        <th>Positions</th>
+                        <th>Location</th>
+                        <th>Selection Process</th>
+                        <th>Description</th>
+                        <th>Work Type</th>
+                        <th>Package</th>
+                        <th>Bond</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let d of driveList">
+                        <td>{{d.CompanyName}}</td>
+                        <td>{{d.DriveByName}}</td>
+                        <td>{{d.Criteria}}</td>
+                        <td>{{d.Positions}}</td>
+                        <td>{{d.Location}}</td>
+                        <td>{{d.SelectionProcess}}</td>
+                        <td>{{d.JobDescription}}</td>
+                        <td>{{d.WorkType}}</td>
+                        <td>{{d.Package}}</td>
+                        <td>{{d.Bond}}</td>
+                        <td>{{d.DriveStatus}}</td>
+                        <td>
+                            <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="editDrive(d)" title="Edit Drive"></i> |
+                            <i class="fa fa-trash-o" aria-hidden="true" title="Delete Drive" (click)="deleteDrive(d.DriveId)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section id="addDrive" *ngIf="!isList">
+    <div class="row">
+        <div class="col">
+            <h4 class="title">{{driveTitle}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form [formGroup]="driveForm" > 
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" formControlName="CompanyName" placeholder="company name">
+                            <label for="floatingInput">Company Name</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <select class="form-control" formControlName="DriveBy" placeholder="Drive by"> 
+                                <option *ngFor="let u of users" [ngValue]="u.UserId">{{u.UserName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" formControlName="Location" placeholder="location">
+                            <label for="floatingInput">Location</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" formControlName="Positions" placeholder="positions">
+                            <label for="floatingInput">No of Positions</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" formControlName="Criteria" placeholder="Criteria">
+                            <label for="floatingInput">Criteria</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" formControlName="Bond" placeholder="Bond">
+                            <label for="floatingInput">Bond</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" formControlName="Package" placeholder="package">
+                            <label for="floatingInput">Package</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" formControlName="SelectionProcess" placeholder="selection process">
+                            <label for="floatingInput">Selection Process</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <select class="form-control" formControlName="WorkType" [value]="selectedWorkType">
+                                <option>Work Type</option>
+                                <option *ngFor="let w of workType">{{w}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" formControlName="JobDescription" placeholder="job description">
+                            <label for="floatingInput">Job Description</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" formControlName="Result" placeholder="result">
+                            <label for="floatingInput">Result</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <select class="form-control" formControlName="DriveStatusId" placeholder="Drive Status">
+                                <option>Work Type</option>
+                                <option *ngFor="let d of driveStatusList" [ngValue]="d.DriveStatusId">{{d.StatusName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <input type="submit" *ngIf="!isUpdate" value="Add Drive" (click)="saveDrive()" [disabled]="driveForm.invalid" class="btn btn-outline-primary"/>
+                        <input type="submit" *ngIf="isUpdate" value="Update Drive" (click)="updateDrive()" [disabled]="driveForm.invalid" class="btn btn-outline-primary"/> &nbsp;&nbsp;
+                        <input type="button"  value="Cancel" (click)="toggleScreen()" class="btn btn-outline-warning"/>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</div>
+

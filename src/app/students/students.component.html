@@ -1,0 +1,83 @@
+<section *ngIf="isListView">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h4>
+                <input type="button" class="btn btn-outline-primary" value="Add Student" (click)="toggleScreen()"/>
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Student Id</th>
+                            <th>Student Name</th>
+                            <th>Batch Name</th>
+                            <th>Ratings</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let stud of studentList">
+                            <td>{{stud.StudentId}}</td>
+                            <td>{{stud.StudentName}}</td>
+                            <td>{{stud.BatchName}}</td>
+                            <td>{{stud.Ratings}}</td>
+                            <td>
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"  title="Edit Drive"></i> |
+                                <i class="fa fa-trash-o" aria-hidden="true" title="Delete Drive"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<section *ngIf="!isListView" id="addStud">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h4>{{studentTitle}}</h4>
+        </div>
+    </div>
+<form [formGroup]="studentForm">
+    <div class="row">
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" formControlName="StudentName" placeholder="Student name">
+                <label for="floatingInput">Studnet Name</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" formControlName="BatchName" placeholder="Student name">
+                <label for="floatingInput">Batch Name</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" formControlName="Ratings" placeholder="Ratings">
+                <label for="floatingInput">Ratings</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input type="button" class="btn btn-outline-primary" value="Add Studnet" (click)="saveStudent()"/> &nbsp;&nbsp; 
+                <input type="button" class="btn btn-outline-warning" value="Cancel" (click)="toggleScreen()"/>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+</section>

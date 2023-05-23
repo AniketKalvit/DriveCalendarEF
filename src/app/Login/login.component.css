@@ -1,0 +1,23 @@
+#login{
+    width: 26%;
+    position: relative;
+    left: 33%;
+    top: 42px;
+    box-shadow: 3px 3px 3px #F4F6F6;
+    border: 3px solid #F4F6F6;
+    padding: 8px;
+    border-radius: 20px;
+}
+#login h5{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+.custom-link{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}

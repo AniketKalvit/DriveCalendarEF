@@ -1,0 +1,39 @@
+<section id="register">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+                <div class="form-floating mb-3">
+                    <h5>SignUp</h5>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="userName" [class.is-invalid]="userName.invalid && 
+                    userName.touched" formControlName="userName" placeholder="your name">
+                    <label for="userName">User Name</label>
+                    <small class="text-danger" [class.d-none]="userName!.valid || userName!.untouched">username is required</small>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" [class.is-invalid]="emailId.invalid && 
+                    emailId.touched" id="emailId" formControlName="emailId" placeholder="name@example.com">
+                    <label for="emailId">Email address</label>
+                    <small class="text-danger" [class.d-none]="emailId!.valid || emailId!.untouched">emailid is required</small>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" [class.is-invalid]="password.invalid && 
+                    password.touched" id="password" formControlName="password" placeholder="your password">
+                    <label for="password">Password</label>
+                    <small class="text-danger" [class.d-none]="password!.valid || password!.untouched">password is required</small>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" [class.is-invalid]="registerForm.errors?.['misMatch']" id="confirmPassword" formControlName="confirmPassword" placeholder="re-enter password">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <small *ngIf="registerForm.errors?.['misMatch']" class="text-danger">Password does not match</small>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="submit" value="Register" [disabled]="registerForm.invalid" class="btn btn-outline-primary">
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</section>
