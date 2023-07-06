@@ -27,8 +27,8 @@
                             <td>{{stud.BatchName}}</td>
                             <td>{{stud.Ratings}}</td>
                             <td>
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"  title="Edit Drive"></i> |
-                                <i class="fa fa-trash-o" aria-hidden="true" title="Delete Drive"></i>
+                                <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="editStudent(stud)" title="Edit Drive"></i> |
+                                <i class="fa fa-trash-o" aria-hidden="true" (click)="deleteStudent(stud.StudentId)" title="Delete Drive"></i>
                             </td>
                         </tr>
                     </tbody>
@@ -73,7 +73,8 @@
     <div class="row">
         <div class="col-6">
             <div class="form-floating mb-3">
-                <input type="button" class="btn btn-outline-primary" value="Add Studnet" (click)="saveStudent()"/> &nbsp;&nbsp; 
+                <input type="button" *ngIf="!isUpdatebtn" class="btn btn-outline-primary" value="Add Studnet" (click)="saveStudent()"/> &nbsp;&nbsp; 
+                <input type="button" *ngIf="isUpdatebtn"  class="btn btn-outline-primary" value="Update Studnet" (click)="saveStudent()"/> &nbsp;&nbsp; 
                 <input type="button" class="btn btn-outline-warning" value="Cancel" (click)="toggleScreen()"/>
             </div>
         </div>

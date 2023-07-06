@@ -31,19 +31,54 @@ getStudentList(){
   })
 }
 
+isUpdatebtn:boolean=false;
+editStudent(stud:any){
+  this.isListView=!this.isListView;
+  this.isUpdatebtn=true;
+  this.studentForm.setValue({
+    StudentId:stud.StudentId,
+StudentName:stud.StudentName,
+BatchName:stud.BatchName,
+Ratings:stud.Ratings,
+IsActive:1
+  });
+}
 toggleScreen(){
   this.isListView=!this.isListView;
+  this.isUpdatebtn=false;
+  this.studentForm.reset();
 }
 
 newStudent:Student={};
 saveStudent(){
   this.newStudent.StudentName=this.studentForm.value.StudentName;
-  this.newStudent.BatchName=this.studentForm.value.BatchName;
-  this.newStudent.Ratings=this.studentForm.value.Ratings;
-  this.newStudent.IsActive=1;
-  this.studentService.postAddDrive(this.newStudent).subscribe(res=>{
-    this.isListView=!this.isListView;
-    this.getStudentList();
-  })
+    this.newStudent.BatchName=this.studentForm.value.BatchName;
+    this.newStudent.Ratings=this.studentForm.value.Ratings;
+    this.newStudent.IsActive=1;
+  if(!this.isUpdatebtn){
+    this.studentService.postAddStudent(this.newStudent).subscribe(res=>{
+      this.isListView=!this.isListView;
+  this.getStudentList();
+    });
+  }
+  else if(this.isUpdatebtn){
+    this.newStudent.StudentId=this.studentForm.value.StudentId;
+    this.studentService.postUpdateStudent(this.newStudent).subscribe(res=>{
+      this.isListView=!this.isListView;
+  this.getStudentList();
+    });
+  }
+  
 }
+
+deleteStudent(id:number){
+  this.studentService.deleteStudent(id).subscribe(res=>{
+    if(!!res){
+      this.isListView=true;
+      this.getStudentList();
+    }
+  });
+}
+
+
 }

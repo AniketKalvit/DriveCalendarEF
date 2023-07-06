@@ -6,4 +6,5 @@ export class Users{
     public confirmPassword?:string;
     public roleId?:string;
     public isActive?:number;
+    public Token?:string;
 }

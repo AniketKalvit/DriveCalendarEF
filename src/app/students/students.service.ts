@@ -12,9 +12,18 @@ constructor(private http:HttpClient){}
 public getStudentList():Observable<any>{
     return this.http.get<any>(api.getAllStudents);
 }
-public postAddDrive(stud:Student):Observable<any>{
+public postAddStudent(stud:Student):Observable<any>{
     let headers = new HttpHeaders()
     headers=headers.append('content-type','application/json');
     return this.http.post<any>(api.postAddStudent,stud,{headers:headers});
+   }
+   public postUpdateStudent(stud:Student):Observable<any>{
+    let headers = new HttpHeaders()
+    headers=headers.append('content-type','application/json');
+    return this.http.put<any>(api.postUpdateStudent,stud,{headers:headers});
+   }
+
+   public deleteStudent(id:number):Observable<any>{
+    return this.http.get<any>(api.deleteStudentById+id);
    }
 }

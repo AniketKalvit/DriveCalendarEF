@@ -16,7 +16,7 @@ export const getAllDriveStatus=baseUrl+"DriveStatus/GetAllDriveStatus";
 export const getAllStudents=baseUrl+"Student/GetAllStudents";
 export const getStudentById=baseUrl+"Student/GetStudentById/";
 export const postAddStudent=baseUrl+"Student/AddStudent";
-export const postUpdateStudent=baseUrl+"Student/UpateStudent";
+export const postUpdateStudent=baseUrl+"Student/UpdateStudent";
 export const deleteStudentById=baseUrl+"Student/DeleteStudent/";
 
 
@@ -24,3 +24,4 @@ export const deleteStudentById=baseUrl+"Student/DeleteStudent/";
 
 
 export const workType=["WFO","WFH"];
+export enum Roles{Student=1,PlacementExecutive,PlacementManager,CEO,Admin};

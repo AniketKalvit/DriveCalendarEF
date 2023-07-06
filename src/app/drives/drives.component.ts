@@ -97,7 +97,7 @@ this.tempDriveId=drive.DriveId;
 }
 
 updateDrive(){
-  debugger
+ // debugger
   this.driveForm.value.driveId=this.tempDriveId;
   console.log(this.driveForm.value);
   this.ds.postUpdateDrive(this.driveForm.value).subscribe(res=>{
