@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col">
             <h3>
-                <button type="button" class="btn btn-outline-primary" (click)="toggleScreen()">Add Button</button>
+                <button type="button" class="btn btn-outline-primary" (click)="toggleScreen()">Add Drive</button>
             </h3>
         </div>
     </div>
@@ -67,8 +67,8 @@
                     </div>
                     <div class="col-4">
                         <div class="form-floating mb-3">
-                            <select class="form-control" formControlName="DriveBy" placeholder="Drive by"> 
-                                <option *ngFor="let u of users" [ngValue]="u.UserId">{{u.UserName}}</option>
+                            <select class="form-control" formControlName="DriveBy"  placeholder="Drive by"> 
+                                <option value=1 *ngFor="let u of users" [ngValue]="u.UserId">{{u.UserName}}</option>
                             </select>
                         </div>
                     </div>
@@ -140,9 +140,8 @@
                     </div>
                     <div class="col-4">
                         <div class="form-floating mb-3">
-                            <select class="form-control" formControlName="DriveStatusId" placeholder="Drive Status">
-                                <option>Work Type</option>
-                                <option *ngFor="let d of driveStatusList" [ngValue]="d.DriveStatusId">{{d.StatusName}}</option>
+                            <select class="form-control"  formControlName="DriveStatusId" placeholder="Drive Status">
+                                <option *ngFor="let d of driveStatusList"  [ngValue]="d.DriveStatusId">{{d.StatusName}}</option>
                             </select>
                         </div>
                     </div>

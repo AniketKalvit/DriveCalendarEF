@@ -1,0 +1,17 @@
+.bg-dark{
+    background:#EC7063 !important ;
+    width: 15%;
+}
+.text-white{
+    font-weight: bold;
+    color: #34495E !important;
+    font-family: 'Times New Roman', Times, serif !important;
+    font-size: 19px;
+}
+.nav-link{
+    color: white;
+    font-size: 18px;
+}
+.fa{
+    color: #5F6A6A;
+}

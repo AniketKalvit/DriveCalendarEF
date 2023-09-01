@@ -24,6 +24,6 @@ public postAddStudent(stud:Student):Observable<any>{
    }
 
    public deleteStudent(id:number):Observable<any>{
-    return this.http.get<any>(api.deleteStudentById+id);
+    return this.http.delete<any>(api.deleteStudentById+id);
    }
 }

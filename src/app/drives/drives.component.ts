@@ -35,8 +35,10 @@ driveForm=this.fb.group({
 ngOnInit(){
 this.getUsers();
 this.getAllDrives();
+this.getAllDriveStatus();
 this.driveTitle="Add Drive";
 }
+name1="Drive Status"
 users:any=[];
 public getUsers(){
   this.ds.getUsers().subscribe(res=>{
@@ -50,6 +52,7 @@ public getAllDrives(){
   });
 }
 public toggleScreen(){
+  this.driveForm.reset();
   this.isList=!this.isList;
   this.driveTitle="Add Drive";
 }

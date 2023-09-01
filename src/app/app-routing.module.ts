@@ -9,6 +9,8 @@ const routes: Routes = [
  {path:'login',component:LoginComponent},
   { path: 'drives', loadChildren: () => import('./drives/drives.module').then(m => m.DrivesModule) },
   { path: 'students', loadChildren: () => import('./students/students.module').then(m => m.StudentsModule) },
+  { path: 'student-drive', loadChildren: () => import('./student-drive/student-drive.module').then(m => m.StudentDriveModule) },
+  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
 ];
 
 @NgModule({

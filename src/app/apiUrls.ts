@@ -19,6 +19,18 @@ export const postAddStudent=baseUrl+"Student/AddStudent";
 export const postUpdateStudent=baseUrl+"Student/UpdateStudent";
 export const deleteStudentById=baseUrl+"Student/DeleteStudent/";
 
+export const getAllStudentDriveStatus=baseUrl+"StudentDriveStatus/GetAllStudentDriveStatus";
+export const getAllStudentDrives=baseUrl+"StudentDrive/GetStudentDrives";
+export const postApplyToDrive=baseUrl+"StudentDrive/ApplyToDrive";
+export const updateStudentDrive=baseUrl+"StudentDrive/UpdateStudentDrive";
+export const deleteStudentDrive=baseUrl+"StudentDrive/DeleteStudentDrive/";
+
+export const getTotalDriveCount=baseUrl+"Dashboard/GetTotalDriveCount";
+export const getTotalPlacementCount=baseUrl+"Dashboard/GetTotalPlacementCount";
+export const getTotalStudentApplied=baseUrl+"Dashboard/GetTotalStudentApplied";
+export const getTotalStudentCount=baseUrl+"Dashboard/GetTotalStudentCount";
+export const getTotalStudentShortlisted=baseUrl+"Dashboard/GetTotalStudentShortlisted";
+export const getTotalRejectedStudents=baseUrl+"Dashboard/GetTotalRejectedStudents";
 
 
 

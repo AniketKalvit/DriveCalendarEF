@@ -72,12 +72,14 @@ saveStudent(){
 }
 
 deleteStudent(id:number){
-  this.studentService.deleteStudent(id).subscribe(res=>{
-    if(!!res){
-      this.isListView=true;
+  let result=confirm('Do you want to delete '+id+' ?');
+  if(result==true)
+  {
+    this.studentService.deleteStudent(id).subscribe(res=>{
       this.getStudentList();
-    }
   });
+  }
+ 
 }
 
 

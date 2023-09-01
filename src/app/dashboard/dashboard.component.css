@@ -1,0 +1,18 @@
+#dashboard{
+    position: relative;
+    top: 40px;
+}
+#dashboard .row{
+    margin-bottom: 60px;
+}
+.bg-body-tertiary{
+    height: 90%;
+}
+.number
+{
+    position: relative;
+    font-size: 40px;
+    left: 19%;
+    top: 25%;
+
+}

@@ -1,0 +1,95 @@
+<section id="list" *ngIf="isListView">
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <input type="button" class="btn btn-outline-primary" (click)="toggleScreen()" value="Add Student to Drive"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+                   <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Student Name</th>
+                            <th>Ratings</th>
+                            <th>Batch Name</th>
+                            <th>Company Name</th>
+                            <th>Location</th>
+                            <th>Status Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let sd of studentDrivesList">
+                            <td>{{sd.Id}}</td>
+                            <td>{{sd.StudentName}}</td>
+                            <td>{{sd.Ratings}}</td>
+                            <td>{{sd.BatchName}}</td>
+                            <td>{{sd.CompanyName}}</td>
+                            <td>{{sd.Location}}</td>
+                            <td>{{sd.StatusName}}</td>
+                            <td>
+                                <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="editStudentDrive(sd)"  title="Edit Drive"></i> |
+                                <i class="fa fa-trash-o" aria-hidden="true" (click)="deleteStudentDrive(sd.Id)"  title="Delete Drive"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                   </table> 
+           
+        </div>
+    </div>
+</div>
+</section>
+<section id="add" *ngIf="!isListView">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4>{{title}}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+            <form [formGroup]="studentDriveForm" (ngSubmit)="saveStudentDrive()">
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-floating mb-3">
+                        <select class="form-control" formControlName="studentId" placeholder="Student Name"> 
+                            <option *ngFor="let s of studentList" [ngValue]="s.StudentId">{{s.StudentName}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-floating mb-3">
+                        <select class="form-control" formControlName="statusId" placeholder="Status Name"> 
+                            <option *ngFor="let s of studentStatusList" [ngValue]="s.StatusId">{{s.StatusName}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-floating mb-3">
+                        <select class="form-control" formControlName="driveId" placeholder="Status Name"> 
+                            <option *ngFor="let s of driveList" [ngValue]="s.DriveId">{{s.CompanyName}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-floating mb-3">
+                       <input type="submit" *ngIf="!isUpdate" value="Add Student to Drive" class="btn btn-outline-primary"/>
+                       <input type="submit" *ngIf="isUpdate" value="Update Student to Drive" class="btn btn-outline-primary"/>
+                       &nbsp;&nbsp;
+                       <input type="button"  value="Cancel" (click)="toggleScreen()" class="btn btn-outline-warning"/>
+                    </div>
+                </div>
+            </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</section>
